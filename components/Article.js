@@ -111,3 +111,54 @@ const data = [
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 */
+
+function articleMaker(e) {
+  let divC = document.createElement('div');
+  divC.classList.add('article');
+  
+  let h2 = document.createElement('h2');
+  h2.textContent = e.title ;
+  divC.appendChild(h2);
+
+  let dateDiv = document.createElement('p');
+  dateDiv.classList.add('date');
+  dateDiv.textContent = e.date;
+  divC.appendChild(dateDiv);
+
+  let p1 = document.createElement('p');
+  p1.textContent = e.firstParagraph;
+  divC.appendChild(p1);
+
+  let p2 = document.createElement('p');
+  p2.textContent = e.secondParagraph;
+  divC.appendChild(p2);
+
+  let p3 = document.createElement('p');
+  p3.textContent = e.thirdParagraph;
+  divC.appendChild(p3);
+
+  let span = document.createElement('span');
+  span.classList.add('expandButton');
+
+  const parentDiv = document.querySelector('.articles');
+  parentDiv.appendChild(divC);
+  
+  divC.addEventListener("click", () => {
+    if(divC.className === 'article'){
+      divC.className = 'article-open';
+    }else{
+      divC.className = 'article';
+    }
+  })
+  return divC;
+  
+}
+  
+
+data.forEach(articleMaker);
+
+
+articleMaker({title: 'Lorem Ipsum', date: 'Idk Today', firstParagraph: 'Lorem Ipsum BLah blah blah blah blah BLah blah blah blah blah BLah blah blah blah bl BLah blah blah blah blah',
+ secondParagraph: 'BLah blah blah blah blah BLah blah blah blah blah BLah blah blah blah blah BLah blah blah blah blah ',
+  thirdParagraph: 'BLah blah blah blah blah BLah blah blah blah blah BLah blah blah blah blah ' });
+
